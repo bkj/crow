@@ -1,5 +1,13 @@
+#!/usr/bin/env python
+
 # Copyright 2015, Yahoo Inc.
 # Licensed under the terms of the Apache License, Version 2.0. See the LICENSE file associated with the project for terms.
+
+"""
+    extract_queries.py
+    
+    Just grabs bounding box and runs through same network as extract_features.py
+"""
 
 import sys
 sys.path.append('/home/bjohnson/projects/py-faster-rcnn/caffe/python')
