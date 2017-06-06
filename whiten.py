@@ -40,13 +40,13 @@ if __name__ == "__main__":
     
     # Learn whitening params from one dataset
     print >> sys.stderr, 'learning transform from %s' % args.whiten_features
-    wdata = np.vstack([v.sum(axis=(1, 2)) for k,v in h5py2iterator(h5py.File(args.whiten_features))])
+    wdata = np.vstack([v.sum(axis=(0, 2)) for k,v in h5py2iterator(h5py.File(args.whiten_features))])
     nwdata = normalize(wdata)
     white_pca = PCA(n_components=args.dim, whiten=True, svd_solver='full').fit(nwdata)
     
     # Applying whitening to second dataset
     print >> sys.stderr, 'applying transform to %s' % args.index_features
-    data = np.vstack([v.sum(axis=(1, 2)) for k,v in h5py2iterator(h5py.File(args.index_features))])
+    data = np.vstack([v.sum(axis=(0, 2)) for k,v in h5py2iterator(h5py.File(args.index_features))])
     ndata = normalize(data)
     white_ndata = white_pca.transform(ndata)
     nwhite_ndata = normalize(white_ndata)
